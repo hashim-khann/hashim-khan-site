@@ -5,8 +5,8 @@ export const SITE = {
   role: 'Digital marketer, SEO and organic growth',
   tagline: 'I work on how websites get found, and lately on building them with AI.',
   description: 'Hashim Khan works on SEO and organic growth: technical SEO, e-commerce migrations, local search and AI search. Field reports, notes and things he is building.',
-  email: 'you@example.com',          // TODO: your email
-  linkedin: 'https://www.linkedin.com/', // TODO: your LinkedIn URL
+  email: 'hashimk.work@gmail.com',          // TODO: your email
+  linkedin: 'https://in.linkedin.com/in/syed-hashim-khan', // TODO: your LinkedIn URL
   resume: '',                         // TODO: e.g. '/resume.pdf' (put the file in /public)
   updated: '4 October 2026',
   // Keep false while the site still has placeholders. Set to true when you're ready for Google to index it.
