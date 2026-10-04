@@ -1,0 +1,14 @@
+---
+import { getCollection } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+import PageHead from '../../components/PageHead.astro';
+import Lab from '../../components/Lab.astro';
+const lab = (await getCollection('lab')).sort((a, b) => a.data.order - b.data.order);
+---
+<Base title="Lab" description="Tools and projects Hashim Khan is building: a Google Business Profile tool, this website, and a customer feedback flow.">
+  <PageHead note="Lab" title="Things I'm building" lede="Tools and projects in progress. The status shows how far each one has got: idea, testing, building or shipped." />
+  <section class="sec">
+    <span class="note">On the bench</span>
+    <div><Lab items={lab} /></div>
+  </section>
+</Base>

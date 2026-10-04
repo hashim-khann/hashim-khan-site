@@ -1,0 +1,23 @@
+---
+import { getCollection, render } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+import PageHead from '../../components/PageHead.astro';
+import Track from '../../components/Track.astro';
+export async function getStaticPaths() {
+  const all = await getCollection('lab');
+  return all.map((entry) => ({ params: { slug: entry.id }, props: { entry } }));
+}
+const { entry } = Astro.props;
+const d = entry.data;
+const { Content } = await render(entry);
+---
+<Base title={d.title} description={d.summary}>
+  <PageHead note="Lab" title={d.title} lede={d.summary} long>
+    <div style="margin-top:1.5rem;max-width:20rem"><Track stage={d.stage} /><div class="stage-names" aria-hidden="true"><span>Idea</span><span>Testing</span><span>Building</span><span>Shipped</span></div></div>
+    <p class="next" style="margin-top:1rem">{d.next}</p>
+  </PageHead>
+  <section class="sec">
+    <span class="note"><a href="/lab/">Back to the lab</a></span>
+    <div class="prose"><Content /></div>
+  </section>
+</Base>

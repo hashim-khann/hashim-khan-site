@@ -1,0 +1,23 @@
+---
+import { SITE } from '../data/site';
+---
+<aside class="kp" aria-label="About Hashim Khan, in brief">
+  <div class="kp-head">
+    <div class="nm">{SITE.name}</div>
+    <div class="role">{SITE.role}</div>
+  </div>
+  <div class="kp-body">
+    Works on technical, e-commerce and local SEO, and on AI search.
+    <dl>
+      <dt>Also known as</dt><dd>{SITE.officialName}</dd>
+      <dt>Education</dt><dd>MBA; BA English</dd>
+      <dt>Reading</dt><dd><i>The Old Man and the Sea</i></dd>
+      <dt>Interests</dt><dd>History, geopolitics, travel</dd>
+    </dl>
+  </div>
+  <div class="kp-links">
+    <a href={SITE.linkedin}>LinkedIn</a>
+    {SITE.resume && <a href={SITE.resume}>Resume (PDF)</a>}
+    <a href="/contact/">Email</a>
+  </div>
+</aside>

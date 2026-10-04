@@ -1,0 +1,8 @@
+---
+interface Props { stage: number }
+const { stage } = Astro.props;
+const names = ['idea', 'testing', 'building', 'shipped'];
+---
+<div class="track" role="img" aria-label={`Status: ${names[stage]}`}>
+  {[0, 1, 2, 3].map((i) => <i class={i < stage ? 'done' : i === stage ? 'at' : ''}></i>)}
+</div>

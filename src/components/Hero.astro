@@ -1,0 +1,37 @@
+---
+import { SITE } from '../data/site';
+---
+<section class="hero" aria-labelledby="who">
+  <div>
+    <h1 id="who"><span>Hashim</span><span class="sur">Khan</span></h1>
+    <p class="intro">{SITE.tagline}</p>
+    <p>Three years in SEO and organic growth across e-commerce, edtech and local search. I've handled the SEO side of moving an activewear site off Shopify, run Google listings for a retail network, and worked on 30+ website projects along the way.</p>
+  </div>
+      <figure class="specimen ask" aria-label="The same search question answered two ways">
+        <div class="ask-top">
+          <div class="ask-q"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>how to get more customers from Google</div>
+          <div class="ask-tabs" role="group" aria-label="Answer type">
+            <button type="button" data-view="serp" aria-pressed="true">Search results</button>
+            <button type="button" data-view="ai" aria-pressed="false">AI answer</button>
+          </div>
+        </div>
+
+        <div class="serp" data-panel="serp">
+          <div class="r res1"><span class="u">growthguide.example › organic</span><span class="t">How to Get More Customers From Google Without Ads</span><span class="d">SEO, content and local listings, explained step by step.</span></div>
+          <span class="n">ten links: you win by ranking</span>
+          <div class="r res1"><span class="u">forum.example › threads › no-leads</span><span class="t">Months of posting, still nothing from Google. What are we missing?</span><span class="d">"Our site has pages, but nobody finds them…"</span></div>
+          <span class="n">the title and snippet earn the click</span>
+          <div class="r res1"><span class="u">agency.example › services › seo</span><span class="t">SEO Services That Grow Your Business | Agency</span><span class="d">Book a free call with our team.</span></div>
+          <span class="n">a sales page competes with real answers</span>
+        </div>
+
+        <div class="serp ai-card" data-panel="ai" hidden>
+          <div class="r answer" id="ai-answer">Make sure search engines can crawl and index your site<a class="cite" href="#" tabindex="-1">1</a>. Write pages that answer what customers actually search for<a class="cite" href="#" tabindex="-1">2</a>, and if you serve local customers, keep your Google Business Profile complete and active<a class="cite" href="#" tabindex="-1">3</a>.</div>
+          <span class="n">one answer: you win by being cited</span>
+          <div class="r sources"><span><b>1</b>growthguide.example</span><span><b>2</b>forum.example</span><span class="hit"><b>3</b>agency.example/blog/local-listing-guide</span></div>
+          <span class="n">the agency's how-to guide got cited, not its sales page</span>
+        </div>
+
+        <figcaption>Same question, two answers. Search used to reward ranking; now it also rewards being the source. My work is getting pages found in both. <span class="mock">Mock-up, example sites.</span></figcaption>
+      </figure>
+</section>

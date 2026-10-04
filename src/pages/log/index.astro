@@ -1,0 +1,14 @@
+---
+import { getCollection } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+import PageHead from '../../components/PageHead.astro';
+import LogList from '../../components/LogList.astro';
+const log = (await getCollection('log')).sort((a, b) => +b.data.date - +a.data.date);
+---
+<Base title="Log" description="Notes and experiments on SEO, site migrations, page speed, AI search and organic growth.">
+  <PageHead note="Log" title="Notes and experiments" lede="Written to figure things out, not to rank. Drafts are marked as drafts." />
+  <section class="sec">
+    <span class="note">All entries</span>
+    <div><LogList entries={log} /></div>
+  </section>
+</Base>

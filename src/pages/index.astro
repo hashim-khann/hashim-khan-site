@@ -1,0 +1,70 @@
+---
+import { getCollection } from 'astro:content';
+import Base from '../layouts/Base.astro';
+import Hero from '../components/Hero.astro';
+import Metro from '../components/Metro.astro';
+import ReportCard from '../components/ReportCard.astro';
+import LogList from '../components/LogList.astro';
+import Lab from '../components/Lab.astro';
+import KnowledgePanel from '../components/KnowledgePanel.astro';
+import Hello from '../components/Hello.astro';
+import { SITE } from '../data/site';
+const work = (await getCollection('work')).sort((a, b) => a.data.order - b.data.order);
+const log = (await getCollection('log')).sort((a, b) => +b.data.date - +a.data.date).slice(0, 4);
+const lab = (await getCollection('lab')).sort((a, b) => a.data.order - b.data.order);
+---
+<Base scripts={['/js/hero.js', '/js/metro.js']}>
+  <Hero />
+  <Metro />
+
+  <section class="sec" id="now" aria-labelledby="now-h">
+    <span class="note">Now,<br>{SITE.nowLabel}</span>
+    <div>
+      <h2 id="now-h">What I'm working on</h2>
+      <ul class="now">{SITE.now.map((n) => <li><strong>{n.t}</strong><span>{n.d}</span></li>)}</ul>
+    </div>
+  </section>
+
+  <section class="sec" id="work" aria-labelledby="work-h">
+    <span class="note">Selected work</span>
+    <div>
+      <h2 id="work-h">Field reports</h2>
+      <p class="sub">Three pieces of work, each split into what I did and what others did. Diagrams are illustrative; names and URLs in examples are anonymised.</p>
+      <div class="reports">{work.map((w) => <ReportCard entry={w} />)}</div>
+      <p class="seeall"><a href="/work/">All work and other projects</a></p>
+    </div>
+  </section>
+
+  <section class="sec" id="log" aria-labelledby="log-h">
+    <span class="note">From the log</span>
+    <div>
+      <h2 id="log-h">Notes and experiments</h2>
+      <LogList entries={log} />
+      <p class="seeall"><a href="/log/">The full log</a></p>
+    </div>
+  </section>
+
+  <section class="sec" id="lab" aria-labelledby="lab-h">
+    <span class="note">Lab</span>
+    <div>
+      <h2 id="lab-h">Things I'm building</h2>
+      <p class="sub">Tools and projects in progress. The status shows how far each one has got.</p>
+      <Lab items={lab} />
+    </div>
+  </section>
+
+  <section class="sec" id="about" aria-labelledby="about-h">
+    <span class="note">About</span>
+    <div class="about">
+      <div>
+        <h2 id="about-h">The short version</h2>
+        <p>I studied English, then did an MBA, and ended up in search. I learn by doing, and I like the parts of SEO that touch real outcomes: leads, referrals, people walking into a store.</p>
+        <p>I've worked in-house at an edtech company and an activewear brand, and on 30+ website projects through agency and freelance work.</p>
+        <p class="seeall"><a href="/about/">More about me</a></p>
+      </div>
+      <KnowledgePanel />
+    </div>
+  </section>
+
+  <Hello />
+</Base>

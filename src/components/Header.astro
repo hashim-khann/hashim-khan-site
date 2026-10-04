@@ -1,0 +1,28 @@
+---
+import { getCollection } from 'astro:content';
+import { SITE } from '../data/site';
+const path = Astro.url.pathname;
+const tabs = [
+  { href: '/', label: 'Home', on: path === '/' },
+  { href: '/work/', label: 'Work', on: path.startsWith('/work') },
+  { href: '/log/', label: 'Log', on: path.startsWith('/log') },
+  { href: '/lab/', label: 'Lab', on: path.startsWith('/lab') },
+  { href: '/about/', label: 'About', on: path.startsWith('/about') },
+  { href: '/contact/', label: 'Contact', on: path.startsWith('/contact') },
+];
+const counts = { work: (await getCollection('work')).length, log: (await getCollection('log')).length, lab: (await getCollection('lab')).length };
+---
+<header class="top">
+  <a class="name" href="/">{SITE.name}</a>
+  <div class="q" role="search">
+    <svg viewBox="0 0 24 24" fill="none" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+    <label for="site-q" class="vh">Search this site</label>
+    <span class="qfield"><input id="site-q" type="search" value="hashim khan" autocomplete="off" spellcheck="false" aria-controls="q-results" aria-expanded="false"><span class="fake-caret" aria-hidden="true"></span></span>
+    <div class="q-results" id="q-results" role="listbox" hidden></div>
+  </div>
+  <button class="theme" type="button" id="theme" aria-label="Switch colour theme">Dark</button>
+</header>
+<nav class="tabs" aria-label="Main">
+  {tabs.map((t) => <a href={t.href} aria-current={t.on ? 'true' : undefined}>{t.label}</a>)}
+</nav>
+<p class="stats">{counts.work} field reports, {counts.log} log entries, {counts.lab} lab projects. Last updated {SITE.updated}.</p>

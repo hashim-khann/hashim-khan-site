@@ -1,0 +1,38 @@
+---
+import Base from '../layouts/Base.astro';
+import PageHead from '../components/PageHead.astro';
+import KnowledgePanel from '../components/KnowledgePanel.astro';
+import { SITE } from '../data/site';
+---
+<Base title="About" description="Hashim Khan (Syed Hasheem Khan) is a digital marketer working on SEO and organic growth, now exploring AI search and building with AI.">
+  <PageHead note="About" title="About me" lede={`Officially ${SITE.officialName}. Hashim to most people.`} />
+  <section class="sec">
+    <span class="note">The story</span>
+    <div class="about">
+      <div class="prose">
+        <p>I studied English, then did an MBA, and ended up in search. I've worked in-house at an edtech company and an activewear brand, and on 30+ website projects through agency and freelance work: audits, site planning, content and local search.</p>
+        <p>My work has moved from page-level SEO to bigger pieces: site migrations, local listings across a retail network, and content workflows that use LLMs. More recently I've been learning CRM and messaging, and working out what AI changes about search.</p>
+        <p>I learn best by doing. I like the parts of SEO that connect to real outcomes: leads, referrals, people walking into a store.</p>
+      </div>
+      <KnowledgePanel />
+    </div>
+  </section>
+  <section class="sec">
+    <span class="note">How I work</span>
+    <div class="prose">
+      <ul>
+        <li>I learn new industries quickly: legal, healthcare, education, e-commerce and local services so far.</li>
+        <li>I turn findings into lists developers can act on, and I check that the changes actually shipped.</li>
+        <li>I try to say clearly what I did and what others did.</li>
+      </ul>
+    </div>
+  </section>
+  <section class="sec">
+    <span class="note">Outside work</span>
+    <div class="prose"><p>I read history and geopolitics, and I travel when I can. Right now I'm reading <i>The Old Man and the Sea</i>.</p></div>
+  </section>
+  <section class="sec">
+    <span class="note">Colophon</span>
+    <div><p class="colophon">Set in Spectral and Instrument Sans. Built with Astro and AI coding tools, hosted for free. The build diary is in the <a href="/lab/this-website/">lab</a>.</p></div>
+  </section>
+</Base>

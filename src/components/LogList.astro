@@ -1,0 +1,19 @@
+---
+interface Props { entries: any[] }
+const { entries } = Astro.props;
+const fmt = (d: Date) => d.toLocaleDateString('en-GB', { month: 'short', year: 'numeric' });
+---
+<div class="legend" aria-hidden="true">
+  <span><i class="mk note"></i>note</span>
+  <span><i class="mk exp"></i>experiment</span>
+</div>
+<ul class="log">
+  {entries.map((e) => (
+    <li id={`l-${e.id}`}>
+      <time datetime={e.data.date.toISOString().slice(0, 7)}>{fmt(e.data.date)}</time>
+      <i class={`mk ${e.data.kind === 'note' ? 'note' : 'exp'}`} title={e.data.kind}></i>
+      <span><a href={`/log/${e.id}/`}>{e.data.title}</a><span class="d">{e.data.summary}</span></span>
+      <span class="st">{e.data.status === 'published' ? '' : e.data.status}</span>
+    </li>
+  ))}
+</ul>

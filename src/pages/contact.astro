@@ -1,0 +1,23 @@
+---
+import Base from '../layouts/Base.astro';
+import PageHead from '../components/PageHead.astro';
+import { SITE } from '../data/site';
+---
+<Base title="Contact" description="Get in touch with Hashim Khan about search, AI, websites or organic growth.">
+  <PageHead note="Contact" title="Say hello">
+    <a class="big-mail" href={`mailto:${SITE.email}`}>{SITE.email}</a>
+  </PageHead>
+  <section class="sec">
+    <span class="note">Good reasons to write</span>
+    <ul class="topics">
+      <li>You're moving a site and want a second pair of eyes on the SEO</li>
+      <li>You're working on local search across many locations</li>
+      <li>You want to compare notes on AI and search</li>
+      <li>You're building something and think I could help</li>
+    </ul>
+  </section>
+  <section class="sec">
+    <span class="note">Elsewhere</span>
+    <div class="links" style="display:flex;gap:1.75rem;flex-wrap:wrap;font-family:'Instrument Sans',sans-serif"><a href={SITE.linkedin}>LinkedIn</a>{SITE.resume && <a href={SITE.resume}>Resume (PDF)</a>}</div>
+  </section>
+</Base>

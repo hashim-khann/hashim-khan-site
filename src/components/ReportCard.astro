@@ -1,0 +1,20 @@
+---
+import Figure from './Figure.astro';
+interface Props { entry: any }
+const { entry } = Astro.props;
+const d = entry.data;
+const url = `/work/${entry.id}/`;
+---
+<article class="report" id={`r-${entry.id}`}>
+  <Figure type={d.figure} />
+  <div class="report-text">
+    <h3><a href={url}>{d.title}</a></h3>
+    <div class="shift" aria-label="Before and after"><span class="was">{d.shiftWas}</span><span class="to" aria-hidden="true">→</span><span class="is">{d.shiftNow}</span></div>
+    <p>{d.summary}</p>
+    <dl class="meta">
+      <dt>My part</dt><dd class="mine">{d.mine}</dd>
+      <dt>Others</dt><dd>{d.others}</dd>
+      <dt>Where</dt><dd>{d.where} <span class="anon">anonymised</span></dd>
+    </dl>
+  </div>
+</article>

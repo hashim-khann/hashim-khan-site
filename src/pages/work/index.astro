@@ -1,0 +1,29 @@
+---
+import { getCollection } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+import PageHead from '../../components/PageHead.astro';
+import ReportCard from '../../components/ReportCard.astro';
+import Hello from '../../components/Hello.astro';
+import { OTHER_PROJECTS } from '../../data/site';
+const work = (await getCollection('work')).sort((a, b) => a.data.order - b.data.order);
+---
+<Base title="Work" description="Field reports on e-commerce migration SEO, local search at scale and organic growth in edtech, plus other website projects.">
+  <PageHead note="Work" title="Field reports" lede="Three pieces of work in depth. Each one separates what I did from what developers and other teams did." />
+  <section class="sec">
+    <span class="note">In depth</span>
+    <div><div class="reports">{work.map((w) => <ReportCard entry={w} />)}</div></div>
+  </section>
+  <section class="sec" aria-labelledby="other-h">
+    <span class="note">Other projects</span>
+    <div>
+      <h2 id="other-h">A selection from 30+ website projects</h2>
+      <div class="projects">
+        {OTHER_PROJECTS.map((g) => (
+          <div><h3>{g.group}</h3><ul>{g.items.map(([n, t]) => <li>{n}<span>{t}</span></li>)}</ul></div>
+        ))}
+      </div>
+      <p class="footnote">On site builds, developers built the websites. My part was SEO requirements, keyword-to-page mapping, site structure, content and on-page checks during development.</p>
+    </div>
+  </section>
+  <Hello />
+</Base>

@@ -1,0 +1,12 @@
+---
+interface Props { note: string; title: string; lede?: string; long?: boolean }
+const { note, title, lede, long = false } = Astro.props;
+---
+<section class="sec pagehead">
+  <span class="note" set:html={note}></span>
+  <div>
+    <h1 class={long ? 'long' : ''}>{title}</h1>
+    {lede && <p class="lede">{lede}</p>}
+    <slot />
+  </div>
+</section>

@@ -1,0 +1,28 @@
+---
+import Track from './Track.astro';
+interface Props { items: any[] }
+const { items } = Astro.props;
+const featured = items.find((i) => i.data.featured);
+const rest = items.filter((i) => !i.data.featured);
+const FLOW = "<figure class=\"flow\" aria-label=\"How the tool works: fetch, analyse, report, reply\">\n            <svg viewBox=\"0 0 360 250\" role=\"img\" aria-label=\"Pipeline diagram\">\n              <g class=\"d-ink\" stroke-width=\"1.4\" fill=\"none\">\n                <rect x=\"110\" y=\"8\" width=\"140\" height=\"34\" rx=\"4\" class=\"f-paper\"/>\n                <rect x=\"110\" y=\"72\" width=\"140\" height=\"34\" rx=\"4\" class=\"f-paper\"/>\n                <rect x=\"110\" y=\"136\" width=\"140\" height=\"34\" rx=\"4\" class=\"f-paper\"/>\n              </g>\n              <g class=\"d-blue\" stroke-width=\"1.4\" fill=\"none\">\n                <rect x=\"10\" y=\"200\" width=\"150\" height=\"38\" rx=\"4\" class=\"f-paper\"/>\n                <rect x=\"200\" y=\"200\" width=\"150\" height=\"38\" rx=\"4\" class=\"f-paper\"/>\n              </g>\n              <g class=\"d-red\" stroke-width=\"1.4\" fill=\"none\">\n                <path class=\"flow\" d=\"M180 42 V70\"/><path class=\"flow\" d=\"M180 106 V134\"/>\n                <path class=\"flow\" d=\"M180 170 V185 H85 V198\"/><path class=\"flow\" d=\"M180 170 V185 H275 V198\"/>\n              </g>\n              <text x=\"180\" y=\"29\" text-anchor=\"middle\">Business Profile API</text>\n              <text x=\"180\" y=\"93\" text-anchor=\"middle\">Scheduled data fetch</text>\n              <text x=\"180\" y=\"157\" text-anchor=\"middle\">Analysis</text>\n              <text x=\"85\" y=\"223\" text-anchor=\"middle\">Review reports</text>\n              <text x=\"275\" y=\"223\" text-anchor=\"middle\">Review replies</text>\n            </svg>\n          </figure>";
+---
+{featured && (
+  <article class="feature" id={`b-${featured.id}`}>
+    <div class="feature-text">
+      <Track stage={featured.data.stage} />
+      <div class="stage-names" aria-hidden="true"><span>Idea</span><span>Testing</span><span>Building</span><span>Shipped</span></div>
+      <h3><a class="plain" href={`/lab/${featured.id}/`}>{featured.data.title}</a></h3>
+      <p>{featured.data.summary}</p>
+      <span class="next">{featured.data.next}</span>
+    </div>
+    <Fragment set:html={FLOW} />
+  </article>
+)}
+<ul class="bench">
+  {rest.map((i) => (
+    <li id={`b-${i.id}`}>
+      <Track stage={i.data.stage} />
+      <div><h3><a class="plain" href={`/lab/${i.id}/`}>{i.data.title}</a></h3><p>{i.data.summary}</p><span class="next">{i.data.next}</span></div>
+    </li>
+  ))}
+</ul>
